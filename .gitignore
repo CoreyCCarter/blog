@@ -39,3 +39,6 @@ venv
 .env
 app.db
 microblog.log*
+.vscode/
+http_ca.crt
+fakeit.py
