@@ -5,6 +5,7 @@ from flask import current_app
 from flask_login import UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
 import jwt
+import json
 from app import db, login
 
 followers = db.Table('followers', db.Column('follower_id', db.Integer, db.ForeignKey('user.id')),
