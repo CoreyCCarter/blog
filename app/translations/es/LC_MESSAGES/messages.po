@@ -32,8 +32,8 @@ msgid "Error: the translation service failed."
 msgstr "Error: el servicio de traducción falló."
 
 #: app/auth/email.py:8
-msgid "[Microblog] Reset Your Password"
-msgstr "[Microblog] Nueva Contraseña"
+msgid "[TrulyVerdant] Reset Your Password"
+msgstr "[TrulyVerdant] Nueva Contraseña"
 
 #: app/auth/forms.py:9 app/auth/forms.py:16 app/main/forms.py:10
 msgid "Username"
@@ -201,8 +201,8 @@ msgid "Translate"
 msgstr "Traducir"
 
 #: app/templates/base.html:4
-msgid "Welcome to Microblog"
-msgstr "Bienvenido a Microblog"
+msgid "Welcome to TrulyVerdant"
+msgstr "Bienvenido a TrulyVerdant"
 
 #: app/templates/base.html:33
 msgid "Login"
