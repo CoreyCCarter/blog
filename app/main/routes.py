@@ -5,8 +5,8 @@ from flask_login import current_user, login_required
 from flask_babel import _, get_locale
 from langdetect import detect, LangDetectException
 from app import db
-from app.main.forms import EditProfileForm, EmptyForm, PostForm, MessageForm
-from app.models import User, Post, Message, Notification
+from app.main.forms import EditProfileForm, EmptyForm, PostForm, MessageForm, NewPlantForm
+from app.models import User, Post, Message, Notification, Plant
 from app.translate import translate
 from app.main import bp
 
@@ -200,3 +200,16 @@ def export_posts():
         current_user.launch_task('export_posts', _('Exporting posts...'))
         db.session.commit()
     return redirect(url_for('main.user', username=current_user.username))
+
+@bp.route('/plant/<common_name>')
+def view_plant(common_name):
+    plant = Plant.query.filter_by(common_name=common_name).first()
+    if plant:
+        image = Plant.img_url
+    return render_template('plant_detail.html', common_name=common_name, image=image)
+
+@bp.route('/plant/new_plant')
+@login_required
+def new_plant():
+    form = NewPlantForm()
+    

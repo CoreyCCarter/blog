@@ -223,3 +223,9 @@ class Task(db.Model):
         job = self.get_rq_job()
         return job.meta.get('progress', 0) if job is not None else 100 
 
+
+class Plant(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    common_name = db.Column(db.String(128), index=True)
+    sci_name = db.Column(db.String(128), index=True)
+    img_url = db.Column(db.Integer)

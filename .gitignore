@@ -43,3 +43,5 @@ tv.log*
 .vscode/
 http_ca.crt
 fakeit.py
+
+certs/
