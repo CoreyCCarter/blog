@@ -45,3 +45,4 @@ http_ca.crt
 fakeit.py
 
 certs/
+logs/
