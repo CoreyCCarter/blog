@@ -88,7 +88,7 @@ class User(UserMixin, PaginatedAPIMixin, db.Model):
     
     def avatar(self, size):
         digest = md5(self.email.lower().encode('utf-8')).hexdigest()
-        return 'https://www.gravatar.com/avatar/{}?=identicon&s={}'.format(digest, size)
+        return 'https://www.gravatar.com/avatar/{}?d=monsterid&s={}&bg=00ff00'.format(digest,size)
     
     def get_reset_password_token(self, expires_in=600):
         return jwt.encode({'reset_password': self.id, 'exp': time() + expires_in},
