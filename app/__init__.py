@@ -13,6 +13,7 @@ from redis import Redis
 import rq
 from config import Config
 
+
 db = SQLAlchemy()
 migrate = Migrate()
 login = LoginManager()
@@ -22,6 +23,7 @@ mail = Mail()
 bootstrap = Bootstrap()
 moment = Moment()
 babel = Babel()
+
 
 
 def create_app(config_class=Config):
