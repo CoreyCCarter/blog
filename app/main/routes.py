@@ -77,8 +77,14 @@ def user(username):
     prev_url = url_for('main.user', username=user.username,
                        page=posts.prev_num) if posts.has_prev else None
     form = EmptyForm()
+    images = [
+        'https://i.redd.it/zeo3a2v2pv5c1.jpeg',
+        'https://i.redd.it/trdx4lun1z5c1.jpg',
+        'https://i.redd.it/htmhkf4q4v5c1.jpg'
+    
+    ]
     return render_template('user.html', user=user, posts=posts.items,
-                           next_url=next_url, prev_url=prev_url, form=form)
+                           next_url=next_url, prev_url=prev_url, form=form, images=images)
 
 @bp.route('/user/<username>/popup')
 @login_required
@@ -95,12 +101,14 @@ def edit_profile():
     form = EditProfileForm(current_user.username)
     if form.validate_on_submit():
         current_user.username = form.username.data.lower()
+        current_user.email = form.email.data.lower()
         current_user.about_me = form.about_me.data
         db.session.commit()
         flash(_('Your changes have been saved.'))
         return redirect(url_for('main.edit_profile'))
     elif request.method == 'GET':
         form.username.data = current_user.username
+        form.email.data = current_user.email
         form.about_me.data = current_user.about_me
     return render_template('edit_profile.html', title=_('Edit Profile'),
                            form=form)

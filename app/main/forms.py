@@ -8,6 +8,7 @@ from app.models import User, Plant
 
 class EditProfileForm(FlaskForm):
     username = StringField(_l('Username'), validators=[DataRequired()])
+    email = StringField(_l('Email'), validators=[DataRequired()])
     about_me = TextAreaField(_l('About me'),
                              validators=[Length(min=0, max=140)])
     submit = SubmitField(_l('Submit'))
@@ -21,8 +22,11 @@ class EditProfileForm(FlaskForm):
             user = User.query.filter_by(username=self.username.data.lower()).first()
             if user is not None:
                 raise ValidationError(_('Please use a different username.'))
-
-
+    def validate_email(self, email):
+            user = User.query.filter_by(email=self.email.data.lower()).first()
+            if user is not None:
+                raise ValidationError(_('Please use a different email.'))
+ 
 class EmptyForm(FlaskForm):
     submit = SubmitField('Submit')
 
